@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="auth-card">
+    <div class="auth-header">Login</div>
+    <div class="auth-content">
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <label>Username:</label>
+            <input type="text" name="username" value="{{ request.POST.username }}" autofocus>
+
+            <label>Password:</label>
+            <input type="password" name="password">
+
+            <button class="btn" type="submit">Login</button>
+        </form>
+
+        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+
+    </div>
+</div>
+</body>
+</html>

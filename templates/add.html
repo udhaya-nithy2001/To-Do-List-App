@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="auth-card">
+    <div class="auth-header" style="font-size:16px; padding: 16px 20px;">
+        <a href="{% url 'home' %}" style="color:white;">← Back</a>
+    </div>
+    <div class="auth-content">
+        {% if error %}<div class="error">{{ error }}</div>{% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <label>Title:</label>
+            <input type="text" name="title" value="{{ request.POST.title }}" autofocus>
+            <label>Description:</label>
+            <textarea name="description">{{ request.POST.description }}</textarea>
+            <label>Complete:</label>
+            <input type="checkbox" name="complete">
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do Items</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="card">
+
+    <div class="header">
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button class="logout-btn" type="submit">Logout</button>
+        </form>
+        <div class="header-title">Hello {{ request.user.username }}</div>
+        <div class="header-sub">You have <i>{{ count }}</i> incomplete tasks</div>
+    </div>
+
+    <div class="toolbar">
+        <form method="GET" class="search-form">
+            <input class="search-input" type="text" name="q"
+                   placeholder="Search your task" value="{{ request.GET.q }}">
+            <button class="search-btn" type="submit">Search</button>
+        </form>
+        <a href="{% url 'add_task' %}" class="add-circle">+</a>
+    </div>
+
+    <div class="task-list">
+        {% if tasks %}
+            {% for task in tasks %}
+            <div class="task-row">
+                <div class="task-left">
+                    <form method="POST" action="{% url 'toggle_task' task.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="circle {% if task.complete %}circle-done{% endif %}"></button>
+                    </form>
+                    <span class="task-name {% if task.complete %}done{% endif %}">{{ task.title }}</span>
+                </div>
+                <div class="task-right">
+                    <a href="{% url 'delete_task' task.id %}" class="icon-delete">✕</a>
+                    <span class="icon-menu">⋮</span>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty">No tasks found.</div>
+        {% endif %}
+    </div>
+
+</div>
+</body>
+</html>
