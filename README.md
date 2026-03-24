@@ -1,71 +1,75 @@
-# Django Todo App
+# 🚀 Django Todo App with REST API
 
-A simple and clean Todo List web application built with Django.
+## 📌 Overview
 
-## Features
-- User Registration & Login
-- Add, Delete Tasks
-- Mark Tasks as Complete/Incomplete
-- Search Tasks
-- Logout
+A full-stack task management application built using **Django** and **Django REST Framework (DRF)**.
+This app allows users to manage tasks with authentication, search, soft delete, priority, and due date features.
 
-## Screenshots
-> Login Page, Home Page, Add Task, Delete Task
+---
 
-## Tech Stack
-- Python
-- Django
-- HTML/CSS
-- SQLite
+## 🔥 Features
 
-## Setup & Installation
+* User Authentication (Register, Login, Logout)
+* CRUD Operations (Create, Read, Update, Delete)
+* Soft Delete System (no permanent data loss)
+* Task Priority (Low / Medium / High)
+* Due Date support
+* Mark tasks as complete/incomplete
+* Search functionality
+* REST API using Django REST Framework (DRF)
+* Secure user-based task handling
 
-### 1. Clone the repository
-```bash
+---
+
+## 🛠 Tech Stack
+
+* Python
+* Django
+* Django REST Framework (DRF)
+* SQLite
+* HTML, CSS
+
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint         | Description      |
+| ------ | ---------------- | ---------------- |
+| GET    | /api/tasks/      | Get all tasks    |
+| POST   | /api/tasks/      | Create task      |
+| GET    | /api/tasks/<id>/ | Get single task  |
+| PUT    | /api/tasks/<id>/ | Update task      |
+| PATCH  | /api/tasks/<id>/ | Partial update   |
+| DELETE | /api/tasks/<id>/ | Soft delete task |
+
+---
+
+## ⚙️ Setup Instructions
+
 git clone https://github.com/udhaya-nithy2001/To-Do-List-App.git
 cd To-Do-List-App
-```
-
-### 2. Install Django
-```bash
-pip install django
-```
-
-### 3. Run migrations
-```bash
-python manage.py makemigrations
+pip install -r requirements.txt
 python manage.py migrate
-```
-
-### 4. Start the server
-```bash
 python manage.py runserver
-```
 
-### 5. Open in browser
-```
-http://127.0.0.1:8000/
-```
+---
 
-## Project Structure
-```
-Todo/
-├── static/css/style.css
-├── templates/
-│   ├── login.html
-│   ├── register.html
-│   ├── home.html
-│   ├── add.html
-│   └── delete.html
-├── Todo/
-│   ├── settings.py
-│   └── urls.py
-└── todoapp/
-    ├── models.py
-    ├── views.py
-    └── migrations/
-```
+## 🔐 Authentication
 
-## Author
-**udhaya-nithy2001**  
+* Django session-based authentication
+* API protected using `IsAuthenticated`
+
+---
+
+## 🚀 Future Improvements
+
+* JWT Authentication
+* Deployment (Render)
+* React frontend
+
+---
+
+## 👨‍💻 Author
+
+Udhayanithy S
 GitHub: https://github.com/udhaya-nithy2001
