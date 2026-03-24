@@ -43,7 +43,6 @@ This app allows users to manage tasks with authentication, search, soft delete, 
 | DELETE | /api/tasks/<id>/ | Soft delete task |
 
 ---
-
 ## ⚙️ Setup Instructions
 
 ```bash
