@@ -73,5 +73,5 @@ python manage.py runserver
 
 ## 👨‍💻 Author
 
-Udhayanithy S
+**Udhayanithy S**
 GitHub: https://github.com/udhaya-nithy2001
