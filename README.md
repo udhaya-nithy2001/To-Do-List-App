@@ -34,13 +34,13 @@ This app allows users to manage tasks with authentication, search, soft delete, 
 ## 📡 API Endpoints
 
 | Method | Endpoint         | Description      |
-| ------ | ---------------- | ---------------- |
+|--------|----------------|------------------|
 | GET    | /api/tasks/      | Get all tasks    |
 | POST   | /api/tasks/      | Create task      |
-| GET    | /api/tasks/<id>/ | Get single task  |
-| PUT    | /api/tasks/<id>/ | Update task      |
-| PATCH  | /api/tasks/<id>/ | Partial update   |
-| DELETE | /api/tasks/<id>/ | Soft delete task |
+| GET    | /api/tasks/{id}/ | Get single task  |
+| PUT    | /api/tasks/{id}/ | Update task      |
+| PATCH  | /api/tasks/{id}/ | Partial update   |
+| DELETE | /api/tasks/{id}/ | Soft delete task |
 
 ---
 ## ⚙️ Setup Instructions
