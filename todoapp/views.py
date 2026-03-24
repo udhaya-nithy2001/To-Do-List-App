@@ -75,7 +75,10 @@ def logout_page(request):
 
 @login_required(login_url='login')
 def home(request):
-    tasks = Task.objects.filter(user=request.user).order_by('complete', '-created_at')
+    tasks = Task.objects.filter(
+        user=request.user,
+        is_deleted=False
+    ).order_by('complete', '-created_at')
 
     query = request.GET.get('q', '').strip()
     if query:
@@ -87,7 +90,6 @@ def home(request):
         'tasks': tasks,
         'count': count
     })
-
 
 @login_required(login_url='login')
 def add_task(request):
@@ -124,7 +126,8 @@ def delete_task(request, id):
     task = get_object_or_404(Task, id=id, user=request.user)
 
     if request.method == "POST":
-        task.delete()
+        task.is_deleted = True
+        task.save()
         return redirect('home')
 
     return render(request, 'delete.html', {'task': task})
@@ -136,9 +139,11 @@ def delete_task(request, id):
 @permission_classes([IsAuthenticated])
 def task_list_create(request):
 
-    tasks = Task.objects.filter(user=request.user).order_by('-created_at')
+    tasks = Task.objects.filter(
+        user=request.user,
+        is_deleted=False
+    ).order_by('complete', '-created_at')
 
-    # 🔍 Search
     query = request.GET.get('q')
     if query:
         tasks = tasks.filter(title__icontains=query)
@@ -161,7 +166,12 @@ def task_list_create(request):
 @permission_classes([IsAuthenticated])
 def task_detail(request, id):
 
-    task = get_object_or_404(Task, id=id, user=request.user)
+    task = get_object_or_404(
+        Task,
+        id=id,
+        user=request.user,
+        is_deleted=False
+    )
 
     if request.method == 'GET':
         serializer = TaskSerializer(task)
@@ -177,5 +187,6 @@ def task_detail(request, id):
         return Response(serializer.errors, status=400)
 
     elif request.method == 'DELETE':
-        task.delete()
+        task.is_deleted = True
+        task.save()
         return Response(status=204)

@@ -27,6 +27,6 @@ urlpatterns = [
     path('add/', views.add_task, name='add_task'),
     path('toggle/<int:id>/', views.toggle_task, name='toggle_task'),
     path('delete/<int:id>/', views.delete_task, name='delete_task'),
-   path('api/tasks/', views.task_list_create, name='api_tasks'),
-   path('api/tasks/<int:id>/', views.task_detail, name='api_task_detail'),
+    path('api/v1/tasks/', views.task_list_create, name='api_tasks'),
+    path('api/v1/tasks/<int:id>/', views.task_detail, name='api_task_detail'),
 ]
