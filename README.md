@@ -46,8 +46,6 @@ This app allows users to manage tasks with authentication, search, soft delete, 
 
 ## ⚙️ Setup Instructions
 
-## ⚙️ Setup Instructions
-
 ```bash
 git clone https://github.com/udhaya-nithy2001/To-Do-List-App.git
 cd To-Do-List-App
