@@ -69,3 +69,7 @@ Todo/
 ## Author
 **udhaya-nithy2001**  
 GitHub: https://github.com/udhaya-nithy2001
+## 🔄 Updated Project Structure
+
+db.sqlite3  README.md	 requirements.txt  templates  test2.txt  todoapp
+manage.py   req_old.txt  static		   test.txt   Todo
